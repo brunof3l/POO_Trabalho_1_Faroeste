@@ -1,2 +1,2 @@
-SHOOTGUN
+SHOTGUN
  
