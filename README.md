@@ -1,3 +1,2 @@
- vinicius corno
- vinicius gay
+SHOOTGUN
  
