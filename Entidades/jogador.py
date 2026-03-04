@@ -36,3 +36,16 @@ boneco = Jogador("Arthur Morgan", 100, 100, 200, 150, 10,
 
 
 boneco.ganhar_exp(100)
+
+
+RAÇAS_FAROESTE = {
+    "Nativo":      {"poder": 3, "defesa": 1, "vida": 15, "esquiva": 6},
+    "Forasteiro":  {"poder": 2, "defesa": 2, "vida": 20, "esquiva": 3},
+    "Veterano":    {"poder": 1, "defesa": 4, "vida": 25, "esquiva": 1}
+}
+
+VOCAÇÕES_FAROESTE = {
+    "Pistoleiro":  {"poder": 7, "defesa": 2, "vida": 10, "esquiva": 4, "item": "Revólver Colt"},
+    "Xerife":      {"poder": 4, "defesa": 6, "vida": 15, "esquiva": 2, "item": "Estrela de Prata"},
+    "Bandoleiro":  {"poder": 5, "defesa": 3, "vida": 12, "esquiva": 5, "item": "Shotgun"}
+}
