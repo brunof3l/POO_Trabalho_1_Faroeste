@@ -1,9 +1,10 @@
-from entidade import Entidade
+from Entidades.entidade import Entidade
 
 
 class Jogador(Entidade):
-    def __init__(self, nome: str, poder: int, defesa: int, vida_maxima: int, vida_atual: int, muniçao: int, nivel: int, exp: int, raca: str, vocacao: str, inventario: dict):
-        super().__init__(nome, poder, defesa, vida_maxima, vida_atual, muniçao)
+    def __init__(self, nome: str, poder: int, defesa: int, vida_maxima: int, vida_atual: int, esquiva: int, muniçao: int, nivel: int, exp: int, raca: str, vocacao: str, inventario: dict):
+        super().__init__(nome, poder, defesa, vida_maxima, vida_atual, esquiva)
+        self.muniçao = muniçao
         self.nivel = nivel
         self.exp = exp
         self.raca = raca
@@ -20,15 +21,26 @@ class Jogador(Entidade):
         # Para subir de nível, temos que ganhar 100 * o nível atual, ou seja 100 EXP para ir para o nível 2 e 200 de EXP para o nível 3
         exp_necessaria = self.nivel * 100
 
-        if self.exp > exp_necessaria:
+        while self.exp >= exp_necessaria:
             self.exp -= exp_necessaria
             self.nivel += 1
+            self.poder += 2
+            self.defesa += 1
+            self.vida_maxima += 5
+            self.vida_atual = self.vida_maxima
+            print(f"{self.nome} subiu para o nível {self.nivel}!! Atributos aumentados e vida restaurada.")
+            exp_necessaria = self.nivel * 100
 
-            print(f"{self.nome} subiu para o nível {self.nivel}!!")
-
-    def usar_item(self):
-        self.inventario = {}
-        print(self.inventario)
+    def usar_item(self, item_nome):
+        if item_nome in self.inventario and self.inventario[item_nome] > 0:
+            if item_nome == "Bandagem":
+                self.curar(20)
+                self.inventario[item_nome] -= 1
+                print(f"Você usou uma Bandagem. Restam {self.inventario[item_nome]}.")
+            else:
+                print(f"Você não sabe como usar {item_nome}.")
+        else:
+            print(f"Você não tem {item_nome} no inventário.")
 
 
 CLASSES_FAROESTE = {
