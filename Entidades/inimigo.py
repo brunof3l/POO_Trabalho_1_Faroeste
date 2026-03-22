@@ -1,4 +1,4 @@
-from Entidades.entidade import Entidade
+from entidades.entidade import Entidade
 
 
 class Inimigo(Entidade):

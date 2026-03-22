@@ -1,4 +1,4 @@
-from Entidades.entidade import Entidade
+from entidades.entidade import Entidade
 
 
 class Jogador(Entidade):
@@ -28,7 +28,8 @@ class Jogador(Entidade):
             self.defesa += 1
             self.vida_maxima += 5
             self.vida_atual = self.vida_maxima
-            print(f"{self.nome} subiu para o nível {self.nivel}!! Atributos aumentados e vida restaurada.")
+            print(
+                f"{self.nome} subiu para o nível {self.nivel}!! Atributos aumentados e vida restaurada.")
             exp_necessaria = self.nivel * 100
 
     def usar_item(self, item_nome):
@@ -36,7 +37,8 @@ class Jogador(Entidade):
             if item_nome == "Bandagem":
                 self.curar(20)
                 self.inventario[item_nome] -= 1
-                print(f"Você usou uma Bandagem. Restam {self.inventario[item_nome]}.")
+                print(
+                    f"Você usou uma Bandagem. Restam {self.inventario[item_nome]}.")
             else:
                 print(f"Você não sabe como usar {item_nome}.")
         else:
