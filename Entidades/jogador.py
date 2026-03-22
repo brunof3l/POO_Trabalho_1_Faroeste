@@ -2,8 +2,8 @@ from entidade import Entidade
 
 
 class Jogador(Entidade):
-    def __init__(self, nome: str, poder: int, defesa: int, vida_maxima: int, vida_atual: int, esquiva: int, nivel: int, exp: int, raca: str, vocacao: str, inventario: str):
-        super().__init__(nome, poder, defesa, vida_maxima, vida_atual, esquiva)
+    def __init__(self, nome: str, poder: int, defesa: int, vida_maxima: int, vida_atual: int, muniçao: int, nivel: int, exp: int, raca: str, vocacao: str, inventario: dict):
+        super().__init__(nome, poder, defesa, vida_maxima, vida_atual, muniçao)
         self.nivel = nivel
         self.exp = exp
         self.raca = raca
@@ -27,25 +27,18 @@ class Jogador(Entidade):
             print(f"{self.nome} subiu para o nível {self.nivel}!!")
 
     def usar_item(self):
-        # ?????
-        pass
+        self.inventario = {}
+        print(self.inventario)
 
 
-boneco = Jogador("Arthur Morgan", 100, 100, 200, 150, 10,
-                 1, 10, "humano", "Pistoleiro", "Nada")
-
-
-boneco.ganhar_exp(100)
-
-
-RAÇAS_FAROESTE = {
-    "Nativo":      {"poder": 3, "defesa": 1, "vida": 15, "esquiva": 6},
-    "Forasteiro":  {"poder": 2, "defesa": 2, "vida": 20, "esquiva": 3},
-    "Veterano":    {"poder": 1, "defesa": 4, "vida": 25, "esquiva": 1}
+CLASSES_FAROESTE = {
+    "Indígena":      {"poder": 3, "defesa": 1, "vida": 15, "muniçao": 6},
+    "Caçador de Recompensa":  {"poder": 2, "defesa": 2, "vida": 20, "muniçao": 18},
+    "Veterano de Guerra":    {"poder": 1, "defesa": 4, "vida": 25, "muniçao": 18}
 }
 
 VOCAÇÕES_FAROESTE = {
-    "Pistoleiro":  {"poder": 7, "defesa": 2, "vida": 10, "esquiva": 4, "item": "Revólver Colt"},
-    "Xerife":      {"poder": 4, "defesa": 6, "vida": 15, "esquiva": 2, "item": "Estrela de Prata"},
-    "Bandoleiro":  {"poder": 5, "defesa": 3, "vida": 12, "esquiva": 5, "item": "Shotgun"}
+    "Pistoleiro":  {"poder": 7, "defesa": 2, "vida": 10, "muniçao": 4, "item": "Revólver Colt"},
+    "Rastreador":      {"poder": 4, "defesa": 6, "vida": 15, "muniçao": 2, "item": "Estrela de Prata"},
+    "Caipira":  {"poder": 5, "defesa": 3, "vida": 12, "muniçao": 5, "item": "Shotgun"}
 }
