@@ -1,5 +1,6 @@
 import os
 import random
+import time
 from entidades.entidade import Entidade
 from entidades.inimigo import Inimigo, Inimigos
 from entidades.jogador import Jogador, CLASSES_FAROESTE, VOCAÇÕES_FAROESTE
@@ -13,18 +14,26 @@ def limpar_tela():
 
 def criar_personagem():
     limpar_tela()
-    print("--- BEM-VINDO AO FAROESTE ---")
-    nome = input("Digite o nome do seu pistoleiro: ")
+    print("="*40)
+    print(" 🌵 BEM VINDO A GOLDEN ROCK! 🌵 ")
+    print("="*40)
+    time.sleep(1)
+    print("O sol do meio-dia castiga a terra rachada...")
+    time.sleep(1)
+    print("O vento quente traz o cheiro de pólvora e uísque barato.")
+    time.sleep(1)
+    print("Engraxe suas botas. Sua historia começa agora!\n")
+    nome = input("Me diga seu nome Cowboy!\n")
 
-    print("\nEscolha sua CLASSE:")
+    print(f"\nEscolha CLASSE {nome}:")
     classes = list(CLASSES_FAROESTE.keys())
     for i, c in enumerate(classes):
-        print(f"{i+1} - {c}: {CLASSES_FAROESTE[c]}")
+        print(f"{i+1} - {c}: Poder - {CLASSES_FAROESTE[c]["poder"]}, Defesa - {CLASSES_FAROESTE[c]["defesa"]}, Vida - {CLASSES_FAROESTE[c]["vida"]}, Munição - {CLASSES_FAROESTE[c]["muniçao"]}")
     escolha_classe = int(input("Escolha o número: ")) - 1
     classe_nome = classes[escolha_classe]
     classe_stats = CLASSES_FAROESTE[classe_nome]
 
-    print("\nEscolha sua VOCAÇÃO:")
+    print("\nAgora escolha sua VOCAÇÃO:")
     vocacoes = list(VOCAÇÕES_FAROESTE.keys())
     for i, v in enumerate(vocacoes):
         print(f"{i+1} - {v}: {VOCAÇÕES_FAROESTE[v]}")
