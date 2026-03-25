@@ -60,6 +60,21 @@ def criar_personagem():
 
     return jogador
 
+def escolher_inimigo_por_nivel(nivel_jogador):
+    dificuldades_permitidas = ["Facil"] 
+    
+    if nivel_jogador >= 3:
+        dificuldades_permitidas.append("Médio")
+
+    if nivel_jogador >= 5:
+        if "Facil" in dificuldades_permitidas:
+            dificuldades_permitidas.remove("Facil") 
+        dificuldades_permitidas.append("Difícil")
+        
+    inimigos_possiveis = [nome for nome, stats in Inimigos.items() if stats["dificuldade"] in dificuldades_permitidas]
+    
+    return random.choice(inimigos_possiveis)
+
 
 def menu_principal(jogador):
     dados = SistemaDados()
@@ -77,7 +92,7 @@ def menu_principal(jogador):
 
         if escolha == "1":
             # Escolher inimigo aleatório
-            nome_inimigo = random.choice(list(Inimigos.keys()))
+            nome_inimigo = escolher_inimigo_por_nivel(jogador.nivel)
             stats = Inimigos[nome_inimigo]
             inimigo = Inimigo(
                 nome=nome_inimigo,
@@ -114,7 +129,7 @@ def menu_principal(jogador):
                 jogador.curar(10)
             else:
                 print("Você foi emboscado enquanto explorava!")
-                nome_inimigo = random.choice(list(Inimigos.keys()))
+                nome_inimigo = escolher_inimigo_por_nivel(jogador.nivel)
                 stats = Inimigos[nome_inimigo]
                 inimigo = Inimigo(nome_inimigo, stats["poder"], stats["defesa"], stats["vida"],
                                   stats["vida"], stats["esquiva"], stats["exp_recompensa"], stats["dificuldade"])
