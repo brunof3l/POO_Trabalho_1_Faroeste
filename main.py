@@ -28,7 +28,8 @@ def criar_personagem():
     print(f"\nEscolha CLASSE {nome}:")
     classes = list(CLASSES_FAROESTE.keys())
     for i, c in enumerate(classes):
-        print(f"{i+1} - {c}: Poder - {CLASSES_FAROESTE[c]["poder"]}, Defesa - {CLASSES_FAROESTE[c]["defesa"]}, Vida - {CLASSES_FAROESTE[c]["vida"]}, Munição - {CLASSES_FAROESTE[c]["muniçao"]}")
+        print(
+            f"{i+1} - {c}: Poder - {CLASSES_FAROESTE[c]["poder"]}, Defesa - {CLASSES_FAROESTE[c]["defesa"]}, Vida - {CLASSES_FAROESTE[c]["vida"]}, Munição - {CLASSES_FAROESTE[c]["muniçao"]}")
     escolha_classe = int(input("Escolha o número: ")) - 1
     classe_nome = classes[escolha_classe]
     classe_stats = CLASSES_FAROESTE[classe_nome]
@@ -69,19 +70,21 @@ def criar_personagem():
 
     return jogador
 
+
 def escolher_inimigo_por_nivel(nivel_jogador):
-    dificuldades_permitidas = ["Facil"] 
-    
+    dificuldades_permitidas = ["Facil"]
+
     if nivel_jogador >= 3:
         dificuldades_permitidas.append("Médio")
 
     if nivel_jogador >= 5:
         if "Facil" in dificuldades_permitidas:
-            dificuldades_permitidas.remove("Facil") 
+            dificuldades_permitidas.remove("Facil")
         dificuldades_permitidas.append("Difícil")
-        
-    inimigos_possiveis = [nome for nome, stats in Inimigos.items() if stats["dificuldade"] in dificuldades_permitidas]
-    
+
+    inimigos_possiveis = [nome for nome, stats in Inimigos.items(
+    ) if stats["dificuldade"] in dificuldades_permitidas]
+
     return random.choice(inimigos_possiveis)
 
 
