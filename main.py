@@ -26,12 +26,17 @@ def criar_personagem():
     nome = input("Me diga seu nome Cowboy!\n")
 
     print(f"\nEscolha CLASSE {nome}:")
+
     classes = list(CLASSES_FAROESTE.keys())
+
     for i, c in enumerate(classes):
         print(
             f"{i+1} - {c}: Poder - {CLASSES_FAROESTE[c]["poder"]}, Defesa - {CLASSES_FAROESTE[c]["defesa"]}, Vida - {CLASSES_FAROESTE[c]["vida"]}, Munição - {CLASSES_FAROESTE[c]["muniçao"]}")
+
     escolha_classe = int(input("Escolha o número: ")) - 1
+
     classe_nome = classes[escolha_classe]
+
     classe_stats = CLASSES_FAROESTE[classe_nome]
 
     print("\nAgora escolha sua VOCAÇÃO:")
