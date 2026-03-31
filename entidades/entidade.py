@@ -9,18 +9,17 @@ class Entidade:
 
     def estar_vivo(self):
         if self.vida_atual > 0:
-            print("Voce está vivo")
             return True
-        else:
-            print("Voce está morto")
-            return False
+        return False
 
     # Receber dano não pode ser valor negativo
     def receber_dano(self, dano):
         self.vida_atual -= dano
         if self.vida_atual <= 0:
             self.vida_atual = 0
-            print("Voce morreu")
+
+
+            
 
     # Curar não pode ultrapassar a vida máxima
     def curar(self,  cura):

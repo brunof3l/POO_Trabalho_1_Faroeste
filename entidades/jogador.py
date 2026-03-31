@@ -13,8 +13,7 @@ class Jogador(Entidade):
 
     def ganhar_exp(self, quantidade):
         self.exp += quantidade
-        print(
-            f"{self.nome} ganhou {quantidade} de EXP e agora está com {self.exp} de EXP!!")
+        print(f"\n{self.nome} ganhou {quantidade} de EXP e agora está com {self.exp} de EXP!!")
         self.subir_nivel()
 
     def subir_nivel(self, ):
@@ -46,13 +45,13 @@ class Jogador(Entidade):
 
 
 CLASSES_FAROESTE = {
-    "Indígena":      {"poder": 3, "defesa": 1, "vida": 15, "muniçao": 6},
-    "Caçador de Recompensa":  {"poder": 2, "defesa": 2, "vida": 20, "muniçao": 18},
-    "Veterano de Guerra":    {"poder": 1, "defesa": 4, "vida": 25, "muniçao": 18}
+    "Indígena":      {"poder": 5, "defesa": 7, "vida": 20, "muniçao": 6},
+    "Caçador de Recompensa":  {"poder": 8, "defesa": 2, "vida": 25, "muniçao": 20},
+    "Veterano de Guerra":    {"poder": 10, "defesa": 5, "vida": 15, "muniçao": 12}
 }
 
 VOCAÇÕES_FAROESTE = {
-    "Pistoleiro":  {"poder": 7, "defesa": 2, "vida": 10, "muniçao": 4, "item": "Revólver Colt"},
-    "Rastreador":      {"poder": 4, "defesa": 6, "vida": 15, "muniçao": 2, "item": "Estrela de Prata"},
-    "Caipira":  {"poder": 5, "defesa": 3, "vida": 12, "muniçao": 5, "item": "Shotgun"}
+    "Pistoleiro":  {"poder": 8, "defesa": 1, "vida": 5, "muniçao": 12, "item": "Revólver"},
+    "Rastreador":      {"poder": 2, "defesa": 10, "vida": 4, "muniçao": 3, "item": "Escopeta"},
+    "Caipira":  {"poder": 3, "defesa": 5, "vida": 15, "muniçao": 1, "item": "Espingarda"}
 }
