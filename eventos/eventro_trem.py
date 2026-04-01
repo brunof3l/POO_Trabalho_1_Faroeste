@@ -1,17 +1,22 @@
 import random
+import time
 
 from combate.combate import Combate
 from entidades.inimigo import Inimigo, Inimigos
+
 
 def evento_assalto_trem(jogador, dados):
     print("="*40)
     print("\ 💥🚂 ASSALTO AO TREM 🚂💥")
     print("="*40)
     print(f"\nAo longe, você vê a fumaça escura de uma locomotiva cortando o deserto.")
+    time.sleep(1)
     print(f"\nO trem passa carregado de suprimentos, munição e talvez algo mais valioso.")
+    time.sleep(1)
     print(f"\nUma oportunidade dessas não aparece duas vezes.")
 
-    escolha_inicial = input(f"\nDeseja tentar assaltar o trem? (s/n): ").strip().lower()
+    escolha_inicial = input(
+        f"\nDeseja tentar assaltar o trem? (s/n): ").strip().lower()
 
     if escolha_inicial != "s":
         print("Você decide não arriscar. O trem desaparece no horizonte.")
@@ -65,7 +70,8 @@ def evento_assalto_trem(jogador, dados):
 
     print("\nAgora você precisa lidar com a segurança do vagão...")
     rolagem_confronto = dados.rolar_d20() + bonus
-    print(f"Rolagem de confronto: {rolagem_confronto} (com modificador {bonus})")
+    print(
+        f"Rolagem de confronto: {rolagem_confronto} (com modificador {bonus})")
 
     if rolagem_confronto < 8:
         print("\nVocê foi surpreendido pelos guardas do trem!")
@@ -94,7 +100,8 @@ def evento_assalto_trem(jogador, dados):
         print("\nDepois do confronto, você revira o vagão às pressas.")
         print("Você encontrou algumas provisões antes de saltar do trem.")
         jogador.muniçao += 10
-        jogador.inventario["Bandagem"] = jogador.inventario.get("Bandagem", 0) + 1
+        jogador.inventario["Bandagem"] = jogador.inventario.get(
+            "Bandagem", 0) + 1
         print("+10 munições")
         print("+1 Bandagem")
         return True
@@ -111,7 +118,8 @@ def evento_assalto_trem(jogador, dados):
 
         elif recompensa == 2:
             print("Você encontrou suprimentos médicos escondidos no vagão.")
-            jogador.inventario["Bandagem"] = jogador.inventario.get("Bandagem", 0) + 2
+            jogador.inventario["Bandagem"] = jogador.inventario.get(
+                "Bandagem", 0) + 2
             print("+2 Bandagens")
 
         else:
@@ -132,13 +140,15 @@ def evento_assalto_trem(jogador, dados):
 
         if recompensa_grande == 1:
             jogador.muniçao += 35
-            jogador.inventario["Bandagem"] = jogador.inventario.get("Bandagem", 0) + 2
+            jogador.inventario["Bandagem"] = jogador.inventario.get(
+                "Bandagem", 0) + 2
             print("+35 munições")
             print("+2 Bandagens")
 
         elif recompensa_grande == 2:
             jogador.muniçao += 25
-            jogador.inventario["Bandagem"] = jogador.inventario.get("Bandagem", 0) + 3
+            jogador.inventario["Bandagem"] = jogador.inventario.get(
+                "Bandagem", 0) + 3
             jogador.curar(15)
             print("+25 munições")
             print("+3 Bandagens")
